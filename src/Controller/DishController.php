@@ -7,6 +7,7 @@ use App\Form\DishType;
 use App\Repository\DishesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,5 +50,17 @@ class DishController extends AbstractController
         return $this->render('dish/create.html.twig', [
             'createDishForm' => $form->createView()
         ]);
+    }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function delete($id): RedirectResponse
+    {
+
+        $dish = $this->em->getRepository(Dishes::class)->find($id);
+        $this->em->remove($dish);
+        $this->em->flush();
+
+        $this->addFlash('success', 'The dish has been removed successfully');
+        return $this->redirect($this->generateUrl('dish.edit'));
     }
 }

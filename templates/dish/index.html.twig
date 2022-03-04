@@ -4,35 +4,44 @@
 
 {% block body %}
 
+    {% for msg in app.flashes('success') %}
+        <div class="alert alert-success">
+            <p>{{ msg }}</p>
+        </div>
+    {% endfor %}
+
     <div class="container">
 
-        <h4 class="mt-2 mb-2">List of Dishes</h4>
+        <div class="d-flex mt-3 mb-3">
+            <div>
+                <h5>List of Dishes</h5>
+            </div>
+            <div class="ml-auto">
+                <a href="{{ path('dish.create') }}">
+                    Create a new dish
+                </a>
+            </div>
+        </div>
 
-        <div class="row">
+        <div class="d-flex">
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <td>No.</td>
                     <td>Name</td>
                     <td>Description</td>
                     <td>Price</td>
-                    <td>
-                        <a href="{{ path('dish.create') }}">
-                            Create
-                        </a>
-                    </td>
                     <td>Delete</td>
                 </tr>
                 </thead>
                 <tbody>
                 {% for dish in dishes %}
                     <tr>
-                        <td>{{ dish.id }}</td>
                         <td>{{ dish.name }}</td>
                         <td>{{ dish.description }}</td>
                         <td>{{  dish.price }}</td>
-                        <td>-</td>
-                        <td>Delete</td>
+                        <td>
+                            <a href="{{ path('dish.delete', {id: dish.id}) }}"> X </a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
