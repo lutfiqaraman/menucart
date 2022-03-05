@@ -47,8 +47,28 @@ class DishController extends AbstractController
             return $this->redirect($this->generateUrl('dish.listofdishes'));
         }
 
-        return $this->render('dish/create.html.twig', [
-            'createDishForm' => $form->createView()
+        return $this->render('dish/editcreatedish.html.twig', [
+            'editCreateDishForm' => $form->createView()
+        ]);
+    }
+
+    #[Route('/edit/{id}', name: 'edit')]
+    public function edit($id, Request $request): Response {
+        $dish = $this->em->getRepository(Dishes::class)->find($id);
+
+        $form = $this->createForm(DishType::class, $dish);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted())
+        {
+            $this->em->persist($dish);
+            $this->em->flush();
+
+            return $this->redirect($this->generateUrl('dish.listofdishes'));
+        }
+
+        return $this->render('dish/editcreatedish.html.twig', [
+            'editCreateDishForm' => $form->createView()
         ]);
     }
 
