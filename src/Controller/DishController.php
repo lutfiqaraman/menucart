@@ -22,7 +22,7 @@ class DishController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/', name: 'edit')]
+    #[Route('/', name: 'listofdishes')]
     public function index(DishesRepository $dishesRepository): Response
     {
         $dishes = $dishesRepository->findAll();
@@ -44,7 +44,7 @@ class DishController extends AbstractController
             $this->em->persist($dish);
             $this->em->flush();
 
-            return $this->redirect($this->generateUrl('dish.edit'));
+            return $this->redirect($this->generateUrl('dish.listofdishes'));
         }
 
         return $this->render('dish/create.html.twig', [
@@ -61,6 +61,6 @@ class DishController extends AbstractController
         $this->em->flush();
 
         $this->addFlash('success', 'The dish has been removed successfully');
-        return $this->redirect($this->generateUrl('dish.edit'));
+        return $this->redirect($this->generateUrl('dish.listofdishes'));
     }
 }
