@@ -41,6 +41,7 @@ class DishController extends AbstractController
 
         if ($form->isSubmitted())
         {
+            $image = $request->files->get('image')['image'];
             $this->em->persist($dish);
             $this->em->flush();
 
