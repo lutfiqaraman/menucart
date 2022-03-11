@@ -30,8 +30,7 @@
                     <td>Name</td>
                     <td>Description</td>
                     <td>Price</td>
-                    <td>Delete</td>
-                    <td>Edit</td>
+                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,10 +40,12 @@
                         <td>{{ dish.description }}</td>
                         <td>{{ dish.price }}</td>
                         <td>
-                            <a href="{{ path('dish.delete', {id: dish.id}) }}"> Delete </a>
-                        </td>
-                        <td>
-                            <a href="{{ path('dish.edit', {id: dish.id}) }}"> Edit</a>
+                            <a class="mr-3" href="{{ path('dish.edit', {id: dish.id}) }}">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="{{ path('dish.delete', {id: dish.id}) }}">
+                                <i class="fa fa-trash"></i>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}
