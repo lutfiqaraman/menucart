@@ -86,7 +86,11 @@ class DishController extends AbstractController
 
     #[Route('/view/{id}', name: 'view')]
     public function view($id, Request $request): Response {
-        return $this->render('dish/viewdish.html.twig');
+        $dish = $this->em->getRepository(Dishes::class)->find($id);
+
+        return $this->render('dish/viewdish.html.twig', [
+            'dishInfo' => $dish
+        ]);
     }
 
     #[Route('/delete/{id}', name: 'delete')]
