@@ -5,7 +5,7 @@ doctrine:
             default:
                 dbname: menucartdb
                 user: root
-                password: '%env(resolve:DATABASE_PASSWORD)%'
+                password: '%env(DATABASE_PASSWORD)%'
                 host: localhost
                 server_version: '5.7'
 
