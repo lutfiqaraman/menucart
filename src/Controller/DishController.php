@@ -39,6 +39,7 @@ class DishController extends AbstractController
         $form = $this->createForm(DishType::class, $dish);
         $form->handleRequest($request);
 
+        //upload an image
         if ($form->isSubmitted())
         {
             $image = $request->files->get('image');
