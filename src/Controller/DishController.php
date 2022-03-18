@@ -40,7 +40,7 @@ class DishController extends AbstractController
         $form->handleRequest($request);
 
         //upload an image
-        if ($form->isSubmitted())
+        if ($form->isSubmitted() && $form->isValid())
         {
             $image = $request->files->get('image');
 
