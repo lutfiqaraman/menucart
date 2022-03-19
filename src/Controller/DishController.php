@@ -67,7 +67,8 @@ class DishController extends AbstractController
     }
 
     #[Route('/edit/{id}', name: 'edit')]
-    public function edit($id, Request $request): Response {
+    public function edit($id, Request $request): Response
+    {
         $dish = $this->em->getRepository(Dishes::class)->find($id);
 
         $form = $this->createForm(DishType::class, $dish);
@@ -87,7 +88,8 @@ class DishController extends AbstractController
     }
 
     #[Route('/view/{id}', name: 'view')]
-    public function view($id, Request $request): Response {
+    public function view($id, Request $request): Response
+    {
         $dish = $this->em->getRepository(Dishes::class)->find($id);
 
         return $this->render('dish/viewdish.html.twig', [
@@ -98,7 +100,6 @@ class DishController extends AbstractController
     #[Route('/delete/{id}', name: 'delete')]
     public function delete($id): RedirectResponse
     {
-
         $dish = $this->em->getRepository(Dishes::class)->find($id);
         $this->em->remove($dish);
         $this->em->flush();
