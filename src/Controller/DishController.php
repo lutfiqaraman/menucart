@@ -42,14 +42,15 @@ class DishController extends AbstractController
         //upload an image
         if ($form->isSubmitted() && $form->isValid())
         {
-            $image = $request->files->get('image');
+            $image = $request->files->get('dish')['image'];
+            $fileName = "";
 
             if ($image) {
                 $fileName = md5(uniqid()) . '.' . $image->guessExtension();
             }
 
             $image->move(
-                $this->getParameter('images_folder'),
+                $this->getParameter('public_images_folder'),
                 $fileName
             );
 

@@ -17,7 +17,10 @@ class DishType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('price')
-            ->add('image', FileType::class)
+            ->add('image', FileType::class, [
+                'mapped' => false,
+                'label'  => 'Image of the dish'
+            ])
             ->add('save', SubmitType::class)
         ;
     }
