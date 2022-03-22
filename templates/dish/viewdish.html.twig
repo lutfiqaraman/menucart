@@ -15,12 +15,12 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ asset('images/' ~ dishInfo.image) }}" alt="image of the dish">
                     <div class="card-body">
                         <h5 class="card-title">{{ dishInfo.name }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Price: {{ dishInfo.price }} $</h6>
                         <p class="card-text">Description: <br> {{ dishInfo.description }}</p>
-                        <p>Render the image is here ....</p>
                     </div>
                 </div>
             </div>

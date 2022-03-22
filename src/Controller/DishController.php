@@ -88,12 +88,10 @@ class DishController extends AbstractController
     }
 
     #[Route('/view/{id}', name: 'view')]
-    public function view($id, Request $request): Response
+    public function view(Dishes $dish): Response
     {
-        $dish = $this->em->getRepository(Dishes::class)->find($id);
-
         return $this->render('dish/viewdish.html.twig', [
-            'dishInfo' => $dish
+            'dishInfo' => $dish,
         ]);
     }
 
