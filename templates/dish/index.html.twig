@@ -30,6 +30,7 @@
                     <td>Name</td>
                     <td>Description</td>
                     <td>Price</td>
+                    <td>Category</td>
                     <td></td>
                 </tr>
                 </thead>
@@ -43,6 +44,7 @@
                         </td>
                         <td>{{ dish.description }}</td>
                         <td>{{ dish.price }}</td>
+                        <td>{{ dish.categoryId }}</td>
                         <td>
                             <a class="mr-3" href="{{ path('dish.edit', {id: dish.id}) }}">
                                 <i class="fa fa-lg fa-edit"></i>
