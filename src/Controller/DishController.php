@@ -74,7 +74,7 @@ class DishController extends AbstractController
         $form = $this->createForm(DishType::class, $dish);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted())
+        if ($form->isSubmitted() && $form->isValid())
         {
             $this->em->persist($dish);
             $this->em->flush();
