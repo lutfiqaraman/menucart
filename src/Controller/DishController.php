@@ -70,7 +70,7 @@ class DishController extends AbstractController
     public function edit($id, Request $request): Response
     {
         $dish = $this->em->getRepository(Dishes::class)->find($id);
-
+        
         $form = $this->createForm(DishType::class, $dish);
         $form->handleRequest($request);
 
