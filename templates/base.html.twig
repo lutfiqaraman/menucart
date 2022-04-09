@@ -54,7 +54,7 @@
     <ul class="main-menu">
         <li><a href="{{ path('homepage') }}">Welcome</a></li>
         <li><a href="{{ path('menu') }}">Menu Cart</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="{{ path('orderlist') }}">Orders</a></li>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <li><a href="#">Employees</a>
             <ul class="sub-menu">
@@ -68,7 +68,6 @@
             </ul>
         </li>
         {% endif %}
-        <li><a href="#">News</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 </header>

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OrderController!{% endblock %}
-
 {% block body %}
-
+    {% for order in theOrder %}
+        {{ order.name }}
+    {% endfor %}
 {% endblock %}
