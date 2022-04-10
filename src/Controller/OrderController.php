@@ -50,4 +50,15 @@ class OrderController extends AbstractController
         return
             $this->redirect($this->generateUrl('menu'));
     }
+
+    #[Route('/status/{id}, {status}', name: 'status')]
+    public function status($id, $status) {
+        $order = $this->em->getRepository(Order::class)->find($id);
+
+        $order->setStatus($status);
+        $this->em->flush();
+
+        return
+            $this->redirect($this->generateUrl('order'));
+    }
 }
