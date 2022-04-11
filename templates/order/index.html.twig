@@ -41,12 +41,16 @@
                             </div>
                         </td>
                         <td>
-
+                            <a class="btn btn-sm btn-outline-danger" href="{{ path('delete', {id: order.id}) }}" role="button">
+                                Remove From Order
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}
             <td>Order Total</td><td></td>
             <td>{{ sum }} $</td>
+            <td></td>
+            <td></td>
             <td></td>
             </tbody>
         </table>
