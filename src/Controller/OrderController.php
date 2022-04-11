@@ -62,4 +62,17 @@ class OrderController extends AbstractController
         return
             $this->redirect($this->generateUrl('orderlist'));
     }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function delete($id): RedirectResponse
+    {
+        $order =
+            $this->em->getRepository(Order::class)->find($id);
+
+        $this->em->remove($order);
+        $this->em->flush();
+
+        return
+            $this->redirect($this->generateUrl('orderlist'));
+    }
 }
