@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Cities{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="container">
+        <br>
+        <h5>Edit A City</h5>
+        <br>
+
+        {{ include('list_of_cities/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('list_of_cities_index') }}">back to list</a>
+
+        {{ include('list_of_cities/_delete_form.html.twig') }}
+    </div>
+
+{% endblock %}
